@@ -62,7 +62,7 @@ fun numberToWords(number: Int): String {
     )
 
     if (number == 0) return units[0]  // თუ ნოლია ეგრევე აბრუნებს 0
-    if (number == 1000) return "1000"
+    if (number == 1000) return "ათასი"
 
 
     val lastDigit = number % 10
@@ -135,7 +135,6 @@ fun numberToWords(number: Int): String {
 
         return result.toString().trim()
     }
-
 
 }
 
