@@ -29,10 +29,8 @@ class MainActivity : AppCompatActivity() {
                 val words = numberToWords(number)
                 tv.text = words
             }
-
         }
     }
-
 }
 
 fun numberToWords(number: Int): String {
@@ -42,7 +40,7 @@ fun numberToWords(number: Int): String {
     )
     val teens = arrayOf(
         "",
-        "თერტმეტი",
+        "თერთმეტი",
         "თორმეტი",
         "ცამეტი",
         "თოთხმეტი",
@@ -61,7 +59,7 @@ fun numberToWords(number: Int): String {
         "ექვსას", "შვიდას", "რვაას", "ცხრაას"
     )
 
-    if (number == 0) return units[0]  // თუ ნოლია ეგრევე აბრუნებს 0
+    if (number == 0) return units[0]
     if (number == 1000) return "ათასი"
 
 
@@ -78,7 +76,7 @@ fun numberToWords(number: Int): String {
         }
 
         if (numberArray[0] > 0) {
-            if (secondLastDigit == 0) {
+            if (secondLastDigit == 0 && lastDigit == 0) {
                 result.append(hundreds[numberArray[0]] + "ი")
             } else {
                 result.append(hundreds[numberArray[0]]).append(" ")
@@ -122,7 +120,6 @@ fun numberToWords(number: Int): String {
                 result.append(tens[numberArray[1]])
                 result.append(teens[numberArray[2]])
             }
-
         } else if (numberArray[1] == 1) {
             if (lastTwoDigits == 10) {
                 result.append("ათი")
@@ -132,10 +129,8 @@ fun numberToWords(number: Int): String {
         } else if (numberArray[1] == 0) {
             result.append(teens[numberArray[2]])
         }
-
         return result.toString().trim()
     }
-
 }
 
 
