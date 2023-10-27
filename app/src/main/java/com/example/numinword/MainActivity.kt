@@ -67,21 +67,22 @@ fun numberToWords(number: Int): String {
     val lastTwoDigits = number % 100
     val secondLastDigit = (number / 10) % 10
 
-    if (secondLastDigit % 2 == 0) {
-        val result = StringBuilder()
-        val numberArray =
-            number.toString().toCharArray().map { it.toString().toInt() }.toMutableList()
-        while (numberArray.size < 3) {
-            numberArray.add(0, 0)
-        }
+    val result = StringBuilder()
+    val numberArray =
+        number.toString().toCharArray().map { it.toString().toInt() }.toMutableList()
+    while (numberArray.size < 3) {
+        numberArray.add(0, 0)
+    }
 
-        if (numberArray[0] > 0) {
-            if (secondLastDigit == 0 && lastDigit == 0) {
-                result.append(hundreds[numberArray[0]] + "ი")
-            } else {
-                result.append(hundreds[numberArray[0]]).append(" ")
-            }
+    if (numberArray[0] > 0) {
+        if (secondLastDigit == 0 && lastDigit == 0) {
+            result.append(hundreds[numberArray[0]] + "ი")
+        } else {
+            result.append(hundreds[numberArray[0]]).append(" ")
         }
+    }
+
+    if (secondLastDigit % 2 == 0) {
 
         if (numberArray[1] > 1) {
             if (lastTwoDigits == 10) {
@@ -99,18 +100,8 @@ fun numberToWords(number: Int): String {
             result.append(units[numberArray[2]])
         }
         return result.toString().trim()
+
     } else {
-
-        val result = StringBuilder()
-        val numberArray =
-            number.toString().toCharArray().map { it.toString().toInt() }.toMutableList()
-        while (numberArray.size < 3) {
-            numberArray.add(0, 0)
-        }
-
-        if (numberArray[0] > 0) {
-            result.append(hundreds[numberArray[0]]).append(" ")
-        }
 
         if (numberArray[1] > 1) {
             if (lastDigit == 0) {
@@ -132,7 +123,3 @@ fun numberToWords(number: Int): String {
         return result.toString().trim()
     }
 }
-
-
-
-
